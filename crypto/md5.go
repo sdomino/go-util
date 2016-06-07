@@ -8,8 +8,8 @@ import (
 	"strings"
 )
 
-// MD5sMatch determines if a local MD5 matches a remote MD5
-func MD5sMatch(localFile, remotePath string) (bool, error) {
+// MD5Match determines if a local MD5 matches a remote MD5
+func MD5Match(localFile, remotePath string) (bool, error) {
 
 	// read the local file; will return os.PathError if doesn't exist
 	b, err := ioutil.ReadFile(localFile)

@@ -7,8 +7,8 @@ import (
 	"net/http"
 )
 
-// RequestURL ...
-func RequestURL(path string) (string, error) {
+// S3RequestURL ...
+func S3RequestURL(path string) (string, error) {
 
 	//
 	res, err := http.DefaultClient.Get(path)
@@ -32,19 +32,19 @@ func RequestURL(path string) (string, error) {
 	return preq["url"], nil
 }
 
-// Download ...
-func Download(path string) (*http.Response, error) {
-	return Request("GET", path, nil)
+// S3Download ...
+func S3Download(path string) (*http.Response, error) {
+	return S3Request("GET", path, nil)
 }
 
-// Upload ...
-func Upload(path string, body io.Reader) error {
-	_, err := Request("PUT", path, body)
+// S3Upload ...
+func S3Upload(path string, body io.Reader) error {
+	_, err := S3Request("PUT", path, body)
 	return err
 }
 
-// Request ...
-func Request(method, path string, body io.Reader) (*http.Response, error) {
+// S3Request ...
+func S3Request(method, path string, body io.Reader) (*http.Response, error) {
 
 	//
 	s3req, err := http.NewRequest(method, path, body)
