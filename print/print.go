@@ -17,9 +17,19 @@ func Color(msg string, v ...interface{}) {
 }
 
 // Password prompts for a password but keeps the typed response hidden
-func Password(p string) string {
-	fmt.Printf(p)
-	return string(gopass.GetPasswd())
+func Password(msg string) string {
+
+	//
+	fmt.Printf(msg)
+
+	//
+	b, err := gopass.GetPasswd()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "[util/print] gopass.GetPasswd() failed - %v", err.Error())
+	}
+
+	//
+	return string(b)
 }
 
 // Prompt will prompt for input from the shell and return a trimmed response
